@@ -1,0 +1,187 @@
+#VRML V2.0 utf8
+
+WorldInfo {
+ title "Wireframe model"
+}
+
+NavigationInfo {
+ headlight TRUE
+}
+
+DEF View1 Viewpoint {
+  orientation 0 1 0 3.14
+  position  0, 0, 0
+  fieldOfView 1
+  description "View 1 - Observer"
+}
+
+Background {
+  skyAngle [
+    1.39626
+    1.51844
+  ]
+  skyColor [
+    0.0 0.0 0.0
+    1.0 0.8 0.8
+    1.0 1.0 0.0
+  ]
+  groundAngle [
+    1.5708
+  ]
+  groundColor [
+    0.0 0.0 0.0
+    0.0 0.50196 0.0
+  ]
+}
+
+DEF MYPOINTS Coordinate {
+  point [
+         -0.08   -0.03   0.57,
+         -0.08   -0.05   0.57,
+         -0.08   -0.02   0.57,
+         -0.11    0.01   0.52,
+         -0.11   -0.01   0.52,
+         -0.11   -0.03   0.53,
+         -0.12   -0.08   0.54,
+         -0.08   -0.09   0.58,
+         -0.06   -0.10   0.60,
+         -0.01   -0.08   0.59,
+         -0.01   -0.03   0.59,
+          0.05   -0.08   0.59,
+          0.05   -0.03   0.59,
+          0.10   -0.08   0.62,
+          0.10   -0.05   0.62,
+          0.16   -0.04   0.62,
+          0.05    0.06   0.58,
+         -0.07    0.07   0.58,
+         -0.11    0.06   0.51,
+         -0.14    0.06   0.50,
+         -0.15   -0.07   0.53,
+         -0.14   -0.09   0.54,
+         -0.15   -0.11   0.55,
+         -0.16   -0.11   0.54,
+         -0.24    0.01   0.81,
+         -0.26    0.04   0.81,
+         -0.25    0.04   0.81,
+          0.06    0.10   0.71,
+           NaN     NaN    NaN,
+           NaN     NaN    NaN,
+           NaN     NaN    NaN,
+           NaN     NaN    NaN
+  ]
+}
+
+Transform {
+   rotation   0.00    0.00    1.00    3.14
+
+   children [
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 51, 38, 40, 39, 51, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 38, 18, 41, 40, 38, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 18, 37, 43, 42, 18, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 37, 16, 44, 43, 37, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 52, 53, 54, 55, 52, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 47, 48, 49, 50, 47, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 32, 33, 34, 35, 32, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 34, 36, 35, 34, -1 ]
+         }
+      }
+
+      Shape  {
+         appearance Appearance {
+            material Material {
+          diffuseColor   1 1 1
+            }
+         }
+         geometry IndexedLineSet {
+            coord USE MYPOINTS
+            coordIndex [ 38, 52, 37, 18, 38, -1 ]
+         }
+      }
+
+      ]}

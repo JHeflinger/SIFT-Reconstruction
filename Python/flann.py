@@ -5,8 +5,10 @@ import os
 MIN_MATCH_COUNT = 20
 script_dir = os.path.dirname(__file__) #<-- absolute dir the script is in
 rel_path1 = "../Resources/myers1.png"
+# rel_path1 = "../Resources/root_quadrangle01.ppm"
 abs_file_path1 = os.path.join(script_dir, rel_path1)
 rel_path2 = "../Resources/myers2.png"
+# rel_path2 = "../Resources/root_quadrangle02.ppm"
 abs_file_path2 = os.path.join(script_dir, rel_path2)
 img1 = cv.imread(abs_file_path1,0)
 img2 = cv.imread(abs_file_path2,0)
@@ -29,7 +31,8 @@ for m,n in matches:
 if len(good)>MIN_MATCH_COUNT:
     src_pts = np.float32([ kp1[m.queryIdx].pt for m in good ]).reshape(-1,1,2)
     dst_pts = np.float32([ kp2[m.trainIdx].pt for m in good ]).reshape(-1,1,2)
-    M, mask = cv.findHomography(src_pts, dst_pts, cv.RANSAC,15.0)
+    M, mask = cv.findHomography(src_pts, dst_pts, cv.RANSAC,20.0)
+    #print(M)
     matchesMask = mask.ravel().tolist()
     h,w = img1.shape
     pts = np.float32([ [0,0],[0,h-1],[w-1,h-1],[w-1,0] ]).reshape(-1,1,2)
@@ -38,6 +41,49 @@ if len(good)>MIN_MATCH_COUNT:
 else:
     print( "Not enough matches are found - {}/{}".format(len(good), MIN_MATCH_COUNT) )
     matchesMask = None
+
+list_kp1 = []
+list_kp2 = []
+
+# For each match...
+for i in range(len(good)):
+    if(matchesMask[i] != 1):
+        continue
+    mat = good[i]
+    # Get the matching keypoints for each of the images
+    img1_idx = mat.queryIdx
+    img2_idx = mat.trainIdx
+
+    # x - columns
+    # y - rows
+    # Get the coordinates
+    (x1, y1) = kp1[img1_idx].pt
+    (x2, y2) = kp2[img2_idx].pt
+
+    # Append to each list
+    list_kp1.append((x1, y1))
+    list_kp2.append((x2, y2))
+print("[",end="")
+for i in range(2):
+    for j in range(len(list_kp1)):
+        if(j == len(list_kp1) - 1):
+            if(i == 1):
+                print(str(round(list_kp1[j][i],1)) + "]")
+            else:
+                print(str(round(list_kp1[j][i],1)) + ";")
+        else:
+            print(str(round(list_kp1[j][i],1)) + " ",end="")
+print("[",end="")
+for i in range(2):
+    for j in range(len(list_kp2)):
+        if(j == len(list_kp2) - 1):
+            if(i == 1):
+                print(str(round(list_kp2[j][i],1)) + "]")
+            else:
+                print(str(round(list_kp2[j][i],1)) + ";")
+        else:
+            print(str(round(list_kp2[j][i],1)) + " ",end="")
+                
 draw_params = dict(matchColor = (0,255,0), # draw matches in green color
                    singlePointColor = None,
                    matchesMask = matchesMask, # draw only inliers
